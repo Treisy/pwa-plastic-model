@@ -16,6 +16,11 @@ workbox.precaching.precacheAndRoute(
 // Implement Navigation Route
 workbox.routing.registerNavigationRoute('/index.html');
 
+//Use strategie Stale While Revalidate
+workbox.routing.registerRoute(/^https?.*/,
+    workbox.strategies.staleWhileRevalidate(),
+    );
+
 //How manage the default urls
 workbox.routing.registerRoute(/^https?.*/,
     workbox.strategies.networkFirst(), 'GET'
